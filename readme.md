@@ -186,6 +186,14 @@ a-) Volumes persistentes
 
  Claim -> StorageClass -> Disponibilizar o espaço que eu preciso. Por exemplo: BlockStorage
 
+28. Headless service
+Serviço criado sem IP que é um apontamento de DNS então significa que qdo eu crio um headless service mandando mysql-master, ele vai apontar para o meu POD master, se eu colocar mysql-slave-1, ele vai apontar para o slave 1
 
+Feito todas as configurações, eu posso fazer os seguintes comandos.
+
+* kubectl get po => ver todos os pods
+* kubectl exec -it <nome_pod> -- bash => entrar em um pod do meu sistema
+* ping mysql-h => Executar um ping no meu serviço mysql-h e ele vai mostrar o ip e de qual pod está pingando.
+* ping mysql-0.mysql-h => Pingar direto no pod mysql-0 do serviço mysql-h
 
 
