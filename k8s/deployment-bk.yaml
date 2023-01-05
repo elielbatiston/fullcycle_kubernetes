@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: goserver
+  labels:
+    app: goserver
+spec:
+  selector:
+    matchLabels:
+      app: goserver  
+  replicas: 2
+  template:
+    metadata:      
+      labels:
+        app: "goserver"
+    spec:
+      containers:
+        - name: goserver
+          image: "batistondeoliveira/hello-go:v2"  
+          # env:
+          #   - name: NAME
+          #     valueFrom:
+          #       configMapKeyRef:
+          #         name: goserver-env
+          #         key: NAME
+          #   - name: AGE
+          #     valueFrom:
+          #       configMapKeyRef:
+          #         name: goserver-env
+          #         key: AGE
+          envFrom:
+            - configMapRef:
+                name: goserver-env

@@ -1,0 +1,75 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: goserver
+  labels:
+    app: goserver
+spec:
+  selector:
+    matchLabels:
+      app: goserver  
+  replicas: 2
+  template:
+    metadata:      
+      labels:
+        app: "goserver"
+    spec:
+      containers:
+        - name: goserver
+          image: "batistondeoliveira/hello-go:v5.4"
+
+          resources:
+            requests:
+              cpu: 100m
+              memory: 20Mi
+            limits: 
+              cpu: 500m
+              memory: 25Mi
+
+          startupProbe:
+            httpGet:
+              path: /healthz
+              port: 8080
+            periodSeconds: 3
+            failureThreshold: 10 #como esse tá 10 e o periodSeconds esta 3, então, vai testar por até 30 min para ver se a aplicação esta no ar para depois o readness e o liveness funcionarem
+            timeoutSeconds: 1 #limite para completar a requisição
+            successThreshold: 1 #qtas vezes ele vai testar para dizer q a aplicação está ok
+            initialDelaySeconds: 10 #aguarda alguns segundos antes de fazer o teste
+
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: 8080
+            periodSeconds: 5
+            failureThreshold: 3 #limite de problemas para reiniciar
+            timeoutSeconds: 1 #limite para completar a requisição
+            successThreshold: 1 #qtas vezes ele vai testar para dizer q a aplicação está ok
+            # initialDelaySeconds: 10 #aguarda alguns segundos antes de fazer o teste
+
+          readinessProbe:
+            httpGet:
+              path: /healthz
+              port: 8080
+            periodSeconds: 3
+            failureThreshold: 1 #limite de problemas para indicar que não esta pronto
+            timeoutSeconds: 1 #limite para completar a requisição
+            successThreshold: 1 #qtas vezes ele vai testar para dizer q a aplicação está ok
+            # initialDelaySeconds: 10 #aguarda alguns segundos antes de fazer o teste
+
+          envFrom:
+            - configMapRef:
+                name: goserver-env
+            - secretRef:
+                name: goserver-secret
+
+          volumeMounts:
+            - mountPath: "/go/myfamily"
+              name: config
+
+      volumes:
+        - name: config
+          configMap:
+            name: configmap-family
+            items:
+            - key: members
+              path: "family.txt"
