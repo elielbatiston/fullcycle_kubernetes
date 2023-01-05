@@ -196,4 +196,6 @@ Feito todas as configurações, eu posso fazer os seguintes comandos.
 * ping mysql-h => Executar um ping no meu serviço mysql-h e ele vai mostrar o ip e de qual pod está pingando.
 * ping mysql-0.mysql-h => Pingar direto no pod mysql-0 do serviço mysql-h
 
+29. StatefulSet - Volumes dinamicos
+Cria volumes dinamicamente para cada replica.
 

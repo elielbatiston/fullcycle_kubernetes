@@ -20,4 +20,16 @@ spec:
           env:
             - name: MYSQL_ROOT_PASSWORD
               value: root 
-    
+          volumeMounts:
+            - mountPath: /var/lib/mysql
+              name: mysql-volume
+
+  volumeClaimTemplates: #Cria volume dinamicamente assim que criar uma nova replica. Nesse caso não precisa do persistent-volume-claim
+  - metadata:
+      name: mysql-volume
+    spec: 
+      accessModes:
+        - ReadWriteOnce
+      resources:
+        requests:
+          storage: 5Gi
