@@ -16,6 +16,10 @@ kubectl cluster-info --context kind-kind => inicio uma comunicação com o kuber
 
 * kubectl get hpa => Exibe as informações de auto scale.
 
+* kubectl get storageclass => Verifica o volume
+
+* kubectl get pvc => Verifica o Persistent Volume Claim
+
 3. Excluir um cluster/pod/replicaset
 * kind delete clusters <nome_cluster> => deleta o cluster, pegar o nome com o comando kind get
 * kubectl delete pod <nom_pod> => delete o pod
@@ -28,6 +32,7 @@ kubectl cluster-info --context kind-kind => inicio uma comunicação com o kuber
 * kubectl config get-clusters
 
 6. Mudar o contexto
+* kubectl config get-contexts => Ver os contextos
 * kubectl config use-context <nome_cluster>
 
 7. Extensões VSCode
