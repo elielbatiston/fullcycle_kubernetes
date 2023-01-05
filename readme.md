@@ -170,3 +170,17 @@ OBS: Vide tabela no github do fortio.
 
 Assistir o hpa: watch kubectl get hpa
 
+27. Volumes
+Semelhante ao docker
+a-) Volumes persistentes
+ Forma Static:
+    Pool de storage: Eu crio um pool de storage de 1TB
+    Claim: 50Gi ou seja de 1TB que eu tenho, disponibilizo 50Gi para um determinado volume
+ 
+ StorageClass: Especificação q faz que eu tenha um drive para que dinamicamente eu possa provisionar volumes/espaço em disco para uma determinada aplicação
+
+ Claim -> StorageClass -> Disponibilizar o espaço que eu preciso. Por exemplo: BlockStorage
+
+
+
+
