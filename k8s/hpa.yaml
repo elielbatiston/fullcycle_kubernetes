@@ -1,0 +1,13 @@
+apiVersion: autoscaling/v1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: goserver-hpa
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: goserver
+  minReplicas: 1
+  maxReplicas: 5
+  #Normalmente ele trabalha com esse percentual mas pra exemplo ficou o debaixo - targetCPUUtilizationPercentage: 75 - Diz que qdo chegar no 75% então ele vai escalar. Cuidado: Deve ser considerado o tempo que o POD demora pra subir pois senão pode ser que não de tempo de subir uma nova replica.
+  targetCPUUtilizationPercentage: 25    

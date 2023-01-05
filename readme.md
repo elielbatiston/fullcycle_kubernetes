@@ -8,10 +8,12 @@ kubectl cluster-info --context kind-kind => inicio uma comunicação com o kuber
 
 * kind create cluster --config=k8s/kind.yaml --name=fullcyle => cria um cluster utilizando a configuração e com o nome fullcycle
 
-2. Exibir os nodes / clusters
+2. Exibir os nodes / clusters / hpa
 * kubectl get nodes => exibe todos os nodes disponiveis
 
 * kind get clusters => exibe todos os clusters criados com o kind
+
+* kubectl get hpa => Exibe as informações de auto scale.
 
 3. Excluir um cluster/pod/replicaset
 * kind delete clusters <nome_cluster> => deleta o cluster, pegar o nome com o comando kind get
@@ -148,3 +150,4 @@ IMPORTANTE: Se tivermos várias replicas, temos que multiplicar o número de rep
 
 exemplo: kubectl top pod goserver-86755b87df-9sdt4
 
+26- 
