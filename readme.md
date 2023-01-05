@@ -1,7 +1,8 @@
+docker build -t batistondeoliveira/hello-go:v9.6 .
+docker push batistondeoliveira/hello-go:v9.6
 =========================
 Comandos importantes
 =========================
-
 1. Create a cluster
 * kind create cluster => Criar um cluster
 kubectl cluster-info --context kind-kind => inicio uma comunicação com o kubernetes no contexto kind-kind
@@ -150,4 +151,22 @@ IMPORTANTE: Se tivermos várias replicas, temos que multiplicar o número de rep
 
 exemplo: kubectl top pod goserver-86755b87df-9sdt4
 
-26- 
+26. Ferramenta para teste de stress
+* Fortio (http://github.com/fortio/fortio)
+* k6
+
+Versão 1.21 do kubectl
+-----------------------
+kubectl run -it --generator=run-pod/v1 fortio --rm --image=fortio/fortio -- load -qps 800 -t 120s -c 70 "http://goserver-service/healthz"
+
+Versão nova
+-----------------------
+kubectl run -it fortio --rm --image=fortio/fortio -- load -qps 800 -t 120s -c 70 "http://goserver-service/healthz"
+800 requisições por segundo
+120s tempo
+70 conexoes simultaneas
+
+OBS: Vide tabela no github do fortio.
+
+Assistir o hpa: watch kubectl get hpa
+
