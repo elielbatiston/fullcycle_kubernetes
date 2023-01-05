@@ -143,5 +143,8 @@ Já na memoria não consegue resolver a situação tão facilmente porque é alg
 
 IMPORTANTE: Se tivermos várias replicas, temos que multiplicar o número de replicas pelo limit de cpu e memória para sabermos de fato quanto nossa aplicação está consumindo.
 
+25. Ver o consumo de um POD
+* kubectl top pod <nome_pod>
 
+exemplo: kubectl top pod goserver-86755b87df-9sdt4
 
