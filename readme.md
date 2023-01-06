@@ -36,9 +36,12 @@ kubectl cluster-info --context kind-kind => inicio uma comunicação com o kuber
 
 5. Listar clusters disponíveis
 * kubectl config get-clusters
+* kubectl config view => ver as configurações do meu cluster
 
 6. Mudar o contexto
 * kubectl config get-contexts => Ver os contextos
+* kubectl config current-context => Ver qual o contexto atual
+* Criar novo contexto, vide seção 36
 * kubectl config use-context <nome_cluster>
 
 7. Extensões VSCode
@@ -243,3 +246,11 @@ exemplo: kubectl create ns dev
 exemplo: kubectl apply -f k8s/deployment.yaml -n=dev
 
 ou posso colocar direto no arquivo deployment.yaml com a tag namespace
+
+36. Contextos por namespace
+Util para separar os contextos e evitar que você execute um arquivo yaml em um namespace errado. (Precisa sempre trocar de contexto)
+
+cat ~/.kube/config => ver as minhas configurações
+* kubectl config view => ver as configurações do meu cluster
+* kubectl config set-context dev --namespace=dev --cluster=kind-fullcycle --user=kind-fullcycle=> cria um contexto chamado dev (Atencao: kind-fullcycle é o nome do cluster e user que está configurado no kubectl config view)
+* kubectl config set-context prod --namespace=prod --cluster=kind-fullcycle --user=kind-fullcycle=> cria um contexto chamado prod (Atencao: kind-fullcycle é o nome do cluster e user que está configurado no kubectl config view)
