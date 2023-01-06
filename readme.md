@@ -42,6 +42,9 @@ kubectl cluster-info --context kind-kind => inicio uma comunicação com o kuber
 * kubectl apply -f <nome_arquivo> 
 exemplo: kubectl apply -f k8s/pod.yaml
 
+* kubectl apply -f <diretorio>  para aplicar todos
+exemplo: kubectl apply -f k8s/
+
 9. Ver os Pods/Replicasets/Service rodando
 * kubectl get pods
 * kubectl get replicaset
@@ -199,3 +202,14 @@ Feito todas as configurações, eu posso fazer os seguintes comandos.
 29. StatefulSet - Volumes dinamicos
 Cria volumes dinamicamente para cada replica.
 
+30. Ingres (Utilizado na nuvem)
+Ele trabalha parecido com o nginx
+Ele é o ponto unico de entrada nas aplicações
+Quando chega /admin, ele manda pro micro serviço de admin
+Quando chega /login, ele manda pro micro serviço de login e assim por diante
+
+31. Ingress nginx
+ingress-nginx helm chart (http://kubernetes.github.io/ingress-nginx/deploy)
+
+Com isso não precisa do service como loadbalance e ele pode ser como clusterIP então vc economiza uma grana
+ 

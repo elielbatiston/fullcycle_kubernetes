@@ -1,0 +1,16 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-host
+  annotations:
+    kubernetes.io/ingress.class: "nginx" #adaptador q podemos usar, tem do kong e outros
+spec:
+  rules:
+  - host: "ingress.fullcycle.com.br"
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          serviceName: goserver-service
+          servicePort: 80
