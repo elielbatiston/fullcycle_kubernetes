@@ -15,6 +15,7 @@ spec:
       labels:
         app: "goserver"
     spec:
+      serviceAccount: server #conforme arquivo security.yaml
       containers:
         - name: goserver
           image: "batistondeoliveira/hello-go:v9.6"
