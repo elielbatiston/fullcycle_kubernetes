@@ -51,6 +51,9 @@ exemplo: kubectl apply -f k8s/pod.yaml
 * kubectl apply -f <diretorio>  para aplicar todos
 exemplo: kubectl apply -f k8s/
 
+* kubectl apply -f <nome_arquivo> -n=<nome_namespace> => Aplica em um namespace específico. Vide seção 35
+exemplo: kubectl apply -f k8s/deployment.yaml -n=dev
+
 9. Ver os Pods/Replicasets/Service rodando
 * kubectl get pods
 * kubectl get replicaset
@@ -220,6 +223,23 @@ ingress-nginx helm chart (http://kubernetes.github.io/ingress-nginx/deploy)
 Com isso não precisa do service como loadbalance e ele pode ser como clusterIP então vc economiza uma grana
  
 32. Certificados
-
-a-) Como instalar (Cert-Manager):
+Como instalar (Cert-Manager):
 http://cert-manager.io/docs/installation/kubernetes
+
+33. Namespace
+Separação virtual lógica que fazemos no nosso cluster k8s pra onde fazemos instalação de cada coisa
+Em todo nosso exemplo, estávamos utilizando o namespace default.
+
+Util para separar o projeto em Prod e Stage pois você pode dizer que o namespace Prod tem mais recurso que o de Stage, embora seria mais interessante ter cluster para cada um, mas com baixo orçamento é válido.
+
+Separa a parte de segurança, acesso, etc.
+
+34. Criar um namespace
+* kubectl create ns <nome_namespace>
+exemplo: kubectl create ns dev
+
+35. Executar yaml no namespace criado
+* kubectl apply -f <nome_arquivo> -n=<nome_namespace>
+exemplo: kubectl apply -f k8s/deployment.yaml -n=dev
+
+ou posso colocar direto no arquivo deployment.yaml com a tag namespace
