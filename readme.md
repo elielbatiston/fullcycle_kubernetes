@@ -20,6 +20,12 @@ kubectl cluster-info --context kind-kind => inicio uma comunicação com o kuber
 
 * kubectl get pvc => Verifica o Persistent Volume Claim
 
+* kubectl get ns => Exibe todos os namespaces que tenho
+
+* kubectl get po -n cert-manager (-n de namespace) => Exibe todos os namespaces com o nome cert-manager
+
+* kubectl get certificates => Exibe os certificados
+
 3. Excluir um cluster/pod/replicaset
 * kind delete clusters <nome_cluster> => deleta o cluster, pegar o nome com o comando kind get
 * kubectl delete pod <nom_pod> => delete o pod
@@ -202,7 +208,7 @@ Feito todas as configurações, eu posso fazer os seguintes comandos.
 29. StatefulSet - Volumes dinamicos
 Cria volumes dinamicamente para cada replica.
 
-30. Ingres (Utilizado na nuvem)
+30. Ingress (Utilizado na nuvem)
 Ele trabalha parecido com o nginx
 Ele é o ponto unico de entrada nas aplicações
 Quando chega /admin, ele manda pro micro serviço de admin
@@ -213,3 +219,7 @@ ingress-nginx helm chart (http://kubernetes.github.io/ingress-nginx/deploy)
 
 Com isso não precisa do service como loadbalance e ele pode ser como clusterIP então vc economiza uma grana
  
+32. Certificados
+
+a-) Como instalar (Cert-Manager):
+http://cert-manager.io/docs/installation/kubernetes
