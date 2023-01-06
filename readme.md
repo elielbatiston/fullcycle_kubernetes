@@ -254,3 +254,11 @@ cat ~/.kube/config => ver as minhas configurações
 * kubectl config view => ver as configurações do meu cluster
 * kubectl config set-context dev --namespace=dev --cluster=kind-fullcycle --user=kind-fullcycle=> cria um contexto chamado dev (Atencao: kind-fullcycle é o nome do cluster e user que está configurado no kubectl config view)
 * kubectl config set-context prod --namespace=prod --cluster=kind-fullcycle --user=kind-fullcycle=> cria um contexto chamado prod (Atencao: kind-fullcycle é o nome do cluster e user que está configurado no kubectl config view)
+
+37. Service Accont
+Quando subimos uma aplicação, de alguma forma ela precisa de uma permissão pra rodar dentro do k8s então, toda vez que eu subo um pod, que subo um deployment ou qq coisa desse tipo, esse cara ta sendo executado no k8s. Toda vez q entro no POD de alguma forma ele precisa ter credenciais para acessar.
+
+* kubectl get serviceaccounts
+
+A service accounts default permite fazer tudo. Então se alguém acessar sua aplicação q usa a service account padrão, ela vai conseguir deletar seu pod, vai conseguir zoar sua aplicação inteira.
+
