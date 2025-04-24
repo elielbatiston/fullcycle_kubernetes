@@ -267,6 +267,10 @@ Ver arquivo security.yaml
 
 * kubectl api-resources => Ver todos os recursos (Ver o api group)
 
-38. ClusterRole
+39. ClusterRole
 Se eu quiser aplicar as roles para o cluster como um todo, então eu utilizo o ClusterRole
 Vide alteração do security.yaml
+
+40. Ver eventos
+* kubectl get events -n <nome_pod>
+
