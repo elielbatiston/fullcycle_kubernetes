@@ -274,3 +274,9 @@ Vide alteração do security.yaml
 40. Ver eventos
 * kubectl get events -n <nome_pod>
 
+41. Ver logs
+* kubectl logs -f <nome-pod> -n <nome-namespace>
+
+
+
+
