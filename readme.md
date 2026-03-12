@@ -277,6 +277,10 @@ Vide alteração do security.yaml
 41. Ver logs
 * kubectl logs -f <nome-pod> -n <nome-namespace>
 
+kubectl logs <nome-pod> -n <nome-namespace>
+
+kubectl describe pod <nome-pod> -n <nome-namespace>
+
 
 
 
