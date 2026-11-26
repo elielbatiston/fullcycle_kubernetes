@@ -276,6 +276,7 @@ Vide alteração do security.yaml
 
 41. Ver logs
 * kubectl logs -f <nome-pod> -n <nome-namespace>
+exemplo: kubectl logs app-xpto-7f456f4cf8-trdpg -n app-xpto
 
 kubectl logs <nome-pod> -n <nome-namespace>
 
